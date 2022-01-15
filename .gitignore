@@ -14,13 +14,8 @@
 bin/
 gen/
 out/
-<<<<<<< HEAD
-#  Uncomment the following line in case you need and you don"t have the release build type files in your app
-=======
-#  Uncomment the following line in case you need and you don't have the release build type files in your app
->>>>>>> b4a4a7491e3df37e671fed600c3655b56ac0630b
-# release/
 
+#  Uncomment the following line in case you need and you don't have the release build type files in your app
 # Gradle files
 .gradle/
 build/
@@ -48,19 +43,15 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
-<<<<<<< HEAD
 .idea/misc.xml
-=======
->>>>>>> b4a4a7491e3df37e671fed600c3655b56ac0630b
+.idea/.name
 # Android Studio 3 in .gitignore file.
 .idea/caches
 .idea/modules.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
-<<<<<<< HEAD
 .idea/compiler.xml
-=======
->>>>>>> b4a4a7491e3df37e671fed600c3655b56ac0630b
+
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
@@ -95,9 +86,7 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-<<<<<<< HEAD
 
 # Android Profiling
 *.hprof
-=======
->>>>>>> b4a4a7491e3df37e671fed600c3655b56ac0630b
+
