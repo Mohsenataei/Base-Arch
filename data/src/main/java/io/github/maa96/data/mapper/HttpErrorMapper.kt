@@ -5,8 +5,9 @@ import io.github.maa96.data.model.HttpError
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 
-class HttpErrorMapper {
+class HttpErrorMapper @Inject constructor(){
     fun mapToErrorModel(throwable: Throwable): Error? {
         return when (throwable) {
             is HttpException -> {

@@ -106,12 +106,12 @@ object NetworkModule {
                 val requestBuilder = request.newBuilder()
                     // add default shared headers to every http request
                     .headers(headers)
-                    .addHeader("X-CMC_PRO_API_KEY", secretFields.apiKey)
+                    .addHeader("X-Api-Key", secretFields.apiKey)
                     // add tokenType and token to Authorization header of request
-                    .addHeader(
-                        "Authorization",
-                        preferencesHelper.tokenType + " " + preferencesHelper.token
-                    )
+//                    .addHeader(
+//                        "Authorization",
+//                        preferencesHelper.tokenType + " " + preferencesHelper.token
+//                    )
                     .method(request.method(), request.body())
                 chain.proceed(requestBuilder.build())
             }
@@ -146,7 +146,7 @@ object NetworkModule {
                 val request = chain.request()
                 val requestBuilder = request.newBuilder()
                     .headers(headers)
-                    .addHeader("X-CMC_PRO_API_KEY", secretFields.apiKey)
+                    .addHeader("X-Api-Key", secretFields.apiKey)
                     .method(request.method(), request.body())
                 chain.proceed(requestBuilder.build())
             }
