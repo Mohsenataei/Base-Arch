@@ -6,18 +6,13 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import io.github.maa96.basearch.di.component.DaggerAppComponent
 
-class ArchitectureApplication : DaggerApplication(){
-    override fun onCreate() {
-        super.onCreate()
-
-    }
-
+class ArchitectureApplication : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
         DaggerAppComponent.factory().create(this)
 
 
-    private fun initDebugModeValues(){
-        if(BuildConfig.DEBUG){
+    private fun initDebugModeValues() {
+        if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this)
         }
     }

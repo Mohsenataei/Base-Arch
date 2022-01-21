@@ -1,0 +1,11 @@
+package io.github.maa96.data.di.qualifier
+
+import javax.inject.Qualifier
+
+/**
+ * A qualifier to identify real cloud api calls
+ */
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Concrete
+

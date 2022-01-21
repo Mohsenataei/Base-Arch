@@ -8,13 +8,17 @@ import dagger.android.AndroidInjector
 import io.github.maa96.basearch.app.ArchitectureApplication
 import io.github.maa96.basearch.di.builder.ActivityBuilder
 import io.github.maa96.basearch.di.module.AppModule
+import io.github.maa96.basearch.di.module.DatabaseModule
+import io.github.maa96.basearch.di.module.NetworkModule
 import javax.inject.Singleton
 
 
 @Singleton
 @Component(
     modules = [
+        (NetworkModule::class),
         (AppModule::class),
+        (DatabaseModule::class),
         (ActivityBuilder::class),
         (AndroidInjectionModule::class)
     ]

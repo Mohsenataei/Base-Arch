@@ -3,15 +3,13 @@ package io.github.maa96.basearch.util.livedata
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
-
 /**
  * A lambda function that receives a [FragmentActivity]
  */
-
 typealias ActivityAction = (FragmentActivity) -> Unit
 
 /**
- * This is a custom wrapper for [SingleEventLiveData] that only works with [ActivityAction]
+ * A custom wrapper for [SingleEventLiveData] that only works with [ActivityAction]
  */
 class ActivityActionLiveData : SingleEventLiveData<ActivityAction>() {
 
@@ -28,22 +26,21 @@ class ActivityActionLiveData : SingleEventLiveData<ActivityAction>() {
      * @param action a lambda function that receives a [FragmentActivity].
      *
      */
-    operator fun invoke(action: ActivityAction){
-        this.setValue(action)
+    operator fun invoke(action: ActivityAction) {
+        this.value = action
     }
 }
 
 /**
  * A lambda function that receives a [Fragment]
  */
-
 typealias FragmentAction = (Fragment) -> Unit
 
 /**
- *  * A custom wrapper for [SingleEventLiveData] that only works with [FragmentAction]
- * */
-
+ * A custom wrapper for [SingleEventLiveData] that only works with [FragmentAction]
+ */
 class FragmentActionLiveData : SingleEventLiveData<FragmentAction>() {
+
     /**
      * invoke operator function to save [action] to value of [SingleEventLiveData] instance.
      *
@@ -57,8 +54,7 @@ class FragmentActionLiveData : SingleEventLiveData<FragmentAction>() {
      * @param action a lambda function that receives a [FragmentAction].
      *
      */
-
-    operator fun invoke(action: FragmentAction){
-        this.setValue(action)
+    operator fun invoke(action: FragmentAction) {
+        this.value = action
     }
 }

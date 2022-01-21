@@ -72,7 +72,10 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
         val inflater = LayoutInflater.from(parent.context)
         val binding: B = DataBindingUtil.inflate(inflater, viewType, parent, false)
 
-        return BaseViewHolder(binding)
+        /**
+         * if you want to enable click on row items you should pass [onItemClicked] to [BaseViewHolder]
+         * */
+        return BaseViewHolder(binding, onItemClicked)
     }
 
 
@@ -98,9 +101,9 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
                 items[oldItemPosition] == newList[newItemPosition]
 
-            override fun getOldListSize(): Int  = items.size
+            override fun getOldListSize(): Int = items.size
 
-            override fun getNewListSize(): Int  = newList.size
+            override fun getNewListSize(): Int = newList.size
 
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
                 items[oldItemPosition] == newList[newItemPosition]
@@ -111,8 +114,6 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
         items.addAll(newList)
 
     }
-
-
 
 
 }

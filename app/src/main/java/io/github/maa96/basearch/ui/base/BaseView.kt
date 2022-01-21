@@ -27,7 +27,7 @@ interface BaseView<V : BaseViewModel, B : ViewDataBinding> {
     /**
     * [ViewDataBinding] child that generates for this [layoutId] by Android DataBinding framework
     */
-    var binding: B
+    val binding: B
 
 
     /**

@@ -6,15 +6,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Config.Android.compileSdkVersion)
-    buildToolsVersion(Config.Android.buildToolsVersion)
+    compileSdkVersion(Dependencies.Android.compileSdkVersion)
+    buildToolsVersion(Dependencies.Android.buildToolsVersion)
 
     defaultConfig {
-        applicationId = Config.Android.applicationId
-        minSdkVersion(Config.Android.minSdkVersion)
-        targetSdkVersion(Config.Android.targetSdkVersion)
-        versionCode = Config.Android.versionCode
-        versionName = Config.Android.versionName
+        applicationId = Dependencies.Android.applicationId
+        minSdkVersion(Dependencies.Android.minSdkVersion)
+        targetSdkVersion(Dependencies.Android.targetSdkVersion)
+        versionCode = Dependencies.Android.versionCode
+        versionName = Dependencies.Android.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,7 +24,7 @@ android {
     }
 
     buildTypes {
-        getByName(Config.BuildTypes.RELEASE) {
+        getByName(Dependencies.BuildTypes.RELEASE) {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -44,48 +44,59 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Config.Libs.kotlin)
-    implementation(Config.Libs.androidxCoreKtx)
-    implementation(Config.Libs.androidXAppcompat)
-    implementation(Config.Libs.androidXConstraintLayout)
-    implementation(Config.CommonLibs.dagger)
-    testImplementation(Config.TestLibs.jUnit)
-    testImplementation(Config.TestLibs.extJUnit)
-    testImplementation(Config.TestLibs.espresso)
+    implementation(Dependencies.Libs.kotlin)
+    implementation(Dependencies.Libs.androidxCoreKtx)
+    implementation(Dependencies.Libs.androidXAppcompat)
+    implementation(Dependencies.Libs.androidXConstraintLayout)
 
-    implementation(Config.CommonLibs.coroutines)
-    implementation(Config.CommonLibs.coroutinesAndroid)
-    implementation(Config.CommonLibs.arrowCore)
-    implementation(Config.CommonLibs.arrowSyntax)
-    kapt(Config.CommonLibs.arrowSyntax)
+    implementation(Dependencies.CommonLibs.dagger)
+    implementation(Dependencies.CommonLibs.daggerAndroid)
+    kapt(Dependencies.CommonLibs.daggerAndroidCompiler)
+    kapt(Dependencies.CommonLibs.daggerCompiler)
+
+    testImplementation(Dependencies.TestLibs.junit)
+    testImplementation(Dependencies.TestLibs.extJUnit)
+    testImplementation(Dependencies.TestLibs.espresso)
+
+    implementation(Dependencies.CommonLibs.coroutines)
+    implementation(Dependencies.CommonLibs.coroutinesAndroid)
+    implementation(Dependencies.CommonLibs.arrowCore)
+    implementation(Dependencies.CommonLibs.arrowSyntax)
+    kapt(Dependencies.CommonLibs.arrowSyntax)
+
+    implementation(project(Dependencies.Modules.data))
+
 
     // jetPack
-    implementation(Config.JetpackLibs.lifecycleExtensions)
-    implementation(Config.JetpackLibs.viewModelKtx)
-    implementation(Config.JetpackLibs.livedataKtx)
-    implementation(Config.JetpackLibs.room)
-    implementation(Config.JetpackLibs.material)
-    implementation(Config.JetpackLibs.constraintLayout)
+    implementation(Dependencies.JetpackLibs.lifecycleExtensions)
+    implementation(Dependencies.JetpackLibs.viewModelKtx)
+    implementation(Dependencies.JetpackLibs.livedataKtx)
+    implementation(Dependencies.JetpackLibs.room)
+    implementation(Dependencies.JetpackLibs.material)
+    implementation(Dependencies.JetpackLibs.constraintLayout)
+    implementation(Dependencies.JetpackLibs.navigationFragment)
+    implementation(Dependencies.JetpackLibs.navigationUi)
+    implementation(Dependencies.JetpackLibs.fragment)
 
     //TODO ("add hilt dependency injection later.")
     //dagger
-    implementation(Config.CommonLibs.dagger)
-    implementation(Config.CommonLibs.daggerAndroid)
-    kapt(Config.CommonLibs.daggerCompiler)
-    kapt(Config.CommonLibs.daggerAndroidCompiler)
+    implementation(Dependencies.CommonLibs.dagger)
+    implementation(Dependencies.CommonLibs.daggerAndroid)
+    kapt(Dependencies.CommonLibs.daggerCompiler)
+    kapt(Dependencies.CommonLibs.daggerAndroidCompiler)
 
 
     //retrofit and okhttp
-    implementation(Config.CommonLibs.retrofit)
-    implementation(Config.CommonLibs.retrofitGson)
-    implementation(Config.CommonLibs.okHttpInterceptor)
-    implementation(Config.CommonLibs.stetho)
-    implementation(Config.CommonLibs.stetho_OkHttp)
+    implementation(Dependencies.CommonLibs.retrofit)
+    implementation(Dependencies.CommonLibs.retrofitGson)
+    implementation(Dependencies.CommonLibs.okHttpInterceptor)
+    implementation(Dependencies.CommonLibs.stetho)
+    implementation(Dependencies.CommonLibs.stetho_OkHttp)
 
     //Glide
 
-    implementation(Config.CommonLibs.glide)
-    kapt(Config.CommonLibs.glideCompiler)
+    implementation(Dependencies.CommonLibs.glide)
+    kapt(Dependencies.CommonLibs.glideCompiler)
 
     /*
     *  implementation Libs.Jetpack.lifecycleExtensions
