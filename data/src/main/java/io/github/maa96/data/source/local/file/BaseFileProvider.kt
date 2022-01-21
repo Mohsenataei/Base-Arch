@@ -30,12 +30,12 @@ interface BaseFileProvider {
      * @param uri
      * @return InputStream
      */
-    fun getContentInputStream(uri: Uri): InputStream
+    fun getContentInputStream(uri: Uri): InputStream?
 
     /**
      * Get MimType of given [Uri]
      */
-    fun getMimType(uri: Uri): String
+    fun getMimType(uri: Uri): String?
 
     /**
      * get an instance of [ContentResolver]

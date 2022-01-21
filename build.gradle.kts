@@ -1,5 +1,4 @@
-import Dependencies.Android.buildToolsVersion
-import io.github.maa96.basearch.Android.compileSdkVersion
+
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -24,8 +23,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { setUrl("https://dl.bintray.com/arrow-kt/arrow-kt/") }
-
+//        maven { setUrl("https://dl.bintray.com/arrow-kt/arrow-kt/") }
     }
 }
 
@@ -74,7 +72,7 @@ subprojects {
     }
 }*/
 
-//subprojects {
+// subprojects {
 //    afterEvaluate { project ->
 //        if (project.hasProperty('android')) {
 //
@@ -104,7 +102,7 @@ subprojects {
 //            }
 //        }
 //    }
-//}
+// }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

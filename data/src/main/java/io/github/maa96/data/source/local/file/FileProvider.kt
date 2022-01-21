@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class FileProvider @Inject constructor(
     private val context: Context
-): BaseFileProvider {
+) : BaseFileProvider {
     override fun getUriForFile(context: Context, authority: String, file: File): Uri {
         return FileProvider.getUriForFile(context, authority, file)
     }
@@ -44,11 +44,11 @@ class FileProvider @Inject constructor(
         return context.assets.open(fileName)
     }
 
-    override fun getContentInputStream(uri: Uri): InputStream {
+    override fun getContentInputStream(uri: Uri): InputStream? {
         return context.contentResolver.openInputStream(uri)
     }
 
-    override fun getMimType(uri: Uri): String {
+    override fun getMimType(uri: Uri): String? {
         return if (uri.scheme?.contentEquals("content") == true) {
             return context.contentResolver.getType(uri)
         } else {
