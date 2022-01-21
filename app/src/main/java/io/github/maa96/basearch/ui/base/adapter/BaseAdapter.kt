@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mohsen.architecture.BR
 
 /**
  * This is an abstract adapter that inherited - extend - [RecyclerView.Adapter]
@@ -50,7 +49,6 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
      */
     abstract fun getLayoutId(position: Int): Int
 
-
     /**
      * Instead of returning viewType, this method will return layout id at given position provided
      * by [getLayoutId] and will be used in [onCreateViewHolder].
@@ -77,7 +75,6 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
          * */
         return BaseViewHolder(binding, onItemClicked)
     }
-
 
     /**
      * Attempt to bind item at given position to holder.
@@ -112,8 +109,5 @@ abstract class BaseAdapter<T : Any, B : ViewDataBinding>(
         diffResult.dispatchUpdatesTo(this)
         items.clear()
         items.addAll(newList)
-
     }
-
-
 }

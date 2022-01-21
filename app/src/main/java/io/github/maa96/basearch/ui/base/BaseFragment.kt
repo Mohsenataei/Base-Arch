@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
-import io.github.maa96.basearch.ui.base.ViewModelScope.FRAGMENT
 import io.github.maa96.basearch.ui.base.ViewModelScope.ACTIVITY
+import io.github.maa96.basearch.ui.base.ViewModelScope.FRAGMENT
 
-
-abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> : DaggerFragment(),
+abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> :
+    Fragment(),
     BaseView<V, B> {
 
     private var _binding: B? = null
@@ -23,23 +22,15 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> : DaggerFrag
         get() = _binding
             ?: throw IllegalStateException("access to binding should between onCreateView and onDestroyView")
 
-
-    @Inject
-    override lateinit var viewModelFactory: ViewModelProvider.Factory
-
-
     /**
-     * Attempt to get viewModel lazily from [viewModelFactory] with the scope of given activity.
+     * Attempt to get viewModel lazily
      *
-     * @param scope given scope.
      * @return T an instance of requested ViewModel.
      */
-    inline fun <reified T : BaseViewModel> getLazyViewModel(scope: ViewModelScope): Lazy<T> =
-        lazy {
-            when (scope) {
-                ACTIVITY -> ViewModelProvider(requireActivity(), viewModelFactory)[T::class.java]
-                FRAGMENT -> ViewModelProvider(this, viewModelFactory)[T::class.java]
-            }
+    inline fun <reified T : BaseViewModel> getLazyViewModel(scope: ViewModelScope = FRAGMENT): Lazy<T> =
+        when (scope) {
+            ACTIVITY -> viewModels()
+            FRAGMENT -> activityViewModels()
         }
 
     override fun onCreateView(
@@ -60,9 +51,12 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> : DaggerFrag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // observe viewModel uiActions in order to pass parent activity as argument of uiAction
-        viewModel.activityAction.observe(viewLifecycleOwner, Observer {
-            it.invoke(requireActivity())
-        })
+        viewModel.activityAction.observe(
+            viewLifecycleOwner,
+            Observer {
+                it.invoke(requireActivity())
+            }
+        )
 
 //        viewModel.fragmentAction.observe(viewLifecycleOwner) {
 //            it?.invoke(this)
