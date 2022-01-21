@@ -1,13 +1,12 @@
 package io.github.maa96.basearch.ui.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 /**
@@ -17,22 +16,16 @@ import javax.inject.Inject
  * @param B A Binding class that inherited from [ViewDataBinding], will be used for creating View of this activity
  */
 
-abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> : DaggerAppCompatActivity(),
+abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> :
+    AppCompatActivity(),
     BaseView<V, B> {
 
     override lateinit var binding: B
 
-    @Inject
-    override lateinit var viewModelFactory: ViewModelProvider.Factory
-
-
     /**
-     * Attempt to get viewModel lazily from [viewModelFactory] with the scope of given activity.
-     *
      * @return T an instance of requested ViewModel.
      */
-    inline fun <reified T : BaseViewModel> getLazyViewModel(): Lazy<T> =
-        lazy { ViewModelProvider(this).get(T::class.java) }
+    inline fun <reified T : BaseViewModel> getLazyViewModel(): Lazy<T> = viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +38,4 @@ abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> : DaggerAppC
         viewModel.activityAction.observe(this, Observer { it?.invoke(this) })
         onViewInitialized(binding)
     }
-
-
 }

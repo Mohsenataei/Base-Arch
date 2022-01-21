@@ -1,14 +1,12 @@
 package io.github.maa96.basearch.di.module
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonPrimitive
-import com.google.gson.JsonSerializer
+import com.google.gson.*
 import com.mohsen.architecture.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.github.maa96.basearch.util.SecretFields
 import io.github.maa96.data.di.qualifier.Concrete
 import io.github.maa96.data.di.qualifier.Stub
@@ -32,6 +30,7 @@ import javax.inject.Singleton
  * The main [Module] for providing network-related classes
  */
 @Module
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     /**

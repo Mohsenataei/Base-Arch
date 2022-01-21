@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
 
@@ -49,11 +50,6 @@ dependencies {
     implementation(Dependencies.Libs.androidXAppcompat)
     implementation(Dependencies.Libs.androidXConstraintLayout)
 
-    implementation(Dependencies.CommonLibs.dagger)
-    implementation(Dependencies.CommonLibs.daggerAndroid)
-    kapt(Dependencies.CommonLibs.daggerAndroidCompiler)
-    kapt(Dependencies.CommonLibs.daggerCompiler)
-
     testImplementation(Dependencies.TestLibs.junit)
     testImplementation(Dependencies.TestLibs.extJUnit)
     testImplementation(Dependencies.TestLibs.espresso)
@@ -66,7 +62,6 @@ dependencies {
 
     implementation(project(Dependencies.Modules.data))
 
-
     // jetPack
     implementation(Dependencies.JetpackLibs.lifecycleExtensions)
     implementation(Dependencies.JetpackLibs.viewModelKtx)
@@ -78,34 +73,19 @@ dependencies {
     implementation(Dependencies.JetpackLibs.navigationUi)
     implementation(Dependencies.JetpackLibs.fragment)
 
-    //TODO ("add hilt dependency injection later.")
-    //dagger
-    implementation(Dependencies.CommonLibs.dagger)
-    implementation(Dependencies.CommonLibs.daggerAndroid)
-    kapt(Dependencies.CommonLibs.daggerCompiler)
-    kapt(Dependencies.CommonLibs.daggerAndroidCompiler)
+    // hilt
+    implementation(Dependencies.CommonLibs.hilt)
+    kapt(Dependencies.CommonLibs.hiltCompiler)
 
-
-    //retrofit and okhttp
+    // retrofit and okhttp
     implementation(Dependencies.CommonLibs.retrofit)
     implementation(Dependencies.CommonLibs.retrofitGson)
     implementation(Dependencies.CommonLibs.okHttpInterceptor)
     implementation(Dependencies.CommonLibs.stetho)
     implementation(Dependencies.CommonLibs.stetho_OkHttp)
 
-    //Glide
+    // Glide
 
     implementation(Dependencies.CommonLibs.glide)
     kapt(Dependencies.CommonLibs.glideCompiler)
-
-    /*
-    *  implementation Libs.Jetpack.lifecycleExtensions
-    implementation Libs.Jetpack.viewModelKtx
-    implementation Libs.Jetpack.livedataKtx
-    implementation Libs.Jetpack.room
-    implementation Libs.Jetpack.material
-    implementation Libs.Jetpack.constraintLayout
-    *
-    * */
-
 }

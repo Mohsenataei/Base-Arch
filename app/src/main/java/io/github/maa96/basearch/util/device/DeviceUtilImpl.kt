@@ -1,10 +1,11 @@
 package io.github.maa96.basearch.util.device
 
+import com.mohsen.architecture.BuildConfig
 import io.github.maa96.data.source.preference.AppPreferencesHelper
-import java.util.*
+import java.util.UUID
 import javax.inject.Inject
 
-class DeviceUtil @Inject constructor(
+class DeviceUtilImpl @Inject constructor(
     private val appPreferencesHelper: AppPreferencesHelper
 ) : BaseDeviceUtil {
 
@@ -21,7 +22,6 @@ class DeviceUtil @Inject constructor(
     }
 
     override fun getAppVersion(): Int {
-        return 0
-//        return BuildConfig.VERSION_CODE
+        return BuildConfig.VERSION_CODE
     }
 }
