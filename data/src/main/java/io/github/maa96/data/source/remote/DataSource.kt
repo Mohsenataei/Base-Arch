@@ -1,13 +1,17 @@
 package io.github.maa96.data.source.remote
 
-import io.github.maa96.data.model.Article
+import arrow.core.Either
+import io.github.maa96.data.model.Error
+import io.github.maa96.data.model.crypto.CryptoCurrency
 import io.github.maa96.data.source.remote.dtos.ResponseWrapper
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface DataSource {
-    @GET("top-headlines")
-    suspend fun getTechCrunchNews(
-        @Query("sources") sources: String = "techcrunch"
-    ): ResponseWrapper<List<Article>>
+    @GET("v1/cryptocurrency/listings/latest")
+    suspend fun getLatestUpdates(
+        @Query("start") start: Int,
+        @Query("limit") limit: Int,
+        @Query("convert") convertTo: String
+    ): ResponseWrapper<List<CryptoCurrency>>
 }
