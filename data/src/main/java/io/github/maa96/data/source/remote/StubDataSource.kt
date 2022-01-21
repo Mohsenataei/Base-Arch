@@ -2,6 +2,7 @@ package io.github.maa96.data.source.remote
 
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
+import io.github.maa96.data.model.Article
 import io.github.maa96.data.model.crypto.CryptoCurrency
 import io.github.maa96.data.source.local.file.BaseFileProvider
 import io.github.maa96.data.source.remote.dtos.ResponseWrapper
@@ -17,13 +18,17 @@ class StubDataSource(
     private val fileProvider: BaseFileProvider
 ) : DataSource {
 
-    override suspend fun getLatestUpdates(
-        start: Int,
-        limit: Int,
-        convertTo: String
-    ): ResponseWrapper<List<CryptoCurrency>> {
-        val inputStream = fileProvider.getAsset("latest_updates.json")
-        val response = String(fileProvider.getByteArrayFromInputStream(inputStream))
-        return gson.fromJson(response) ?: throw JsonParseException("provided json file is not ")
+//    override suspend fun getLatestUpdates(
+//        start: Int,
+//        limit: Int,
+//        convertTo: String
+//    ): ResponseWrapper<List<CryptoCurrency>> {
+//        val inputStream = fileProvider.getAsset("latest_updates.json")
+//        val response = String(fileProvider.getByteArrayFromInputStream(inputStream))
+//        return gson.fromJson(response) ?: throw JsonParseException("provided json file is not ")
+//    }
+
+    override suspend fun getTechCrunchNews(sources: String): ResponseWrapper<List<Article>> {
+        TODO("Not yet implemented")
     }
 }

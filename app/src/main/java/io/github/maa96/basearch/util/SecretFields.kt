@@ -8,11 +8,11 @@ import javax.inject.Inject
  */
 class SecretFields @Inject constructor() {
 
-    private val debugBaseUrl = "https://pro-api.coinmarketcap.com/"
+    private val debugBaseUrl = "https://newsapi.org/v2/"
 
-    private val releaseBaseUrl = "https://pro-api.coinmarketcap.com/"
+    private val releaseBaseUrl = "https://newsapi.org/v2/"
 
-    val apiKey: String = "c3fbf66f-8aa2-455b-8c1c-fb930aed1378"
+    val apiKey: String = "a51cefac233347d894f86ac05fb6c647"
 
     fun getBaseUrl(): String {
         return if (BuildConfig.DEBUG) {
