@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph.xml">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/nav_list">
+
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="io.github.maa96.basearch.ui.home.list.ArticlesListFragment"
+        android:label="ArticlesList"
+        tools:layout="@layout/fragment_articles_list">
+
+    </fragment>
 
 </navigation>
