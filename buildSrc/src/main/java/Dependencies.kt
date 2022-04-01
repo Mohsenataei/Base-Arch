@@ -1,8 +1,10 @@
 object Dependencies {
     object Versions {
         const val kotlin = "1.5.21"
-        const val gradle = "4.0.0"
-
+        const val gradle = "7.0.0"
+        const val activityCompose = "1.4.0"
+        const val compose = "1.1.1"
+        const val composeViewModel = "2.4.1"
         const val arrow = "0.10.4"
         const val ktlint = "0.37.2"
         const val coroutines = "1.3.3"
@@ -105,6 +107,15 @@ object Dependencies {
         const val stetho_OkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
         const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
         const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    }
+
+    object ComposeLibs {
+        const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
+        const val Material = "androidx.compose.material:material:${Versions.compose}"
+        const val Animation = "androidx.compose.animation:animation:${Versions.compose}"
+        const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
+        const val junit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     }
 
     object TestLibs {

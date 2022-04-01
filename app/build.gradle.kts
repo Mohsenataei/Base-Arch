@@ -7,8 +7,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Dependencies.Android.compileSdkVersion)
-    buildToolsVersion(Dependencies.Android.buildToolsVersion)
+    compileSdk = Dependencies.Android.compileSdkVersion
+    buildToolsVersion = Dependencies.Android.buildToolsVersion
 
     defaultConfig {
         applicationId = Dependencies.Android.applicationId
@@ -20,8 +20,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose = true
+        dataBinding = true
     }
 
     buildTypes {
@@ -40,6 +42,10 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.11.1"
     }
 }
 
@@ -88,4 +94,12 @@ dependencies {
 
     implementation(Dependencies.CommonLibs.glide)
     kapt(Dependencies.CommonLibs.glideCompiler)
+
+    // compose
+    implementation(Dependencies.ComposeLibs.activityCompose)
+    implementation(Dependencies.ComposeLibs.Animation)
+    implementation(Dependencies.ComposeLibs.Material)
+    implementation(Dependencies.ComposeLibs.viewModel)
+    implementation(Dependencies.ComposeLibs.uiTooling)
+    implementation(Dependencies.ComposeLibs.junit)
 }
